@@ -4,6 +4,7 @@ import { AccountOverviewPage } from "../pages/AccountOverviewPage"
 
 const accountOviewPage = new AccountOverviewPage()
 const expectedHeaders = ['Account', 'Balance*', 'Available Amount'];
+
 const accountDetails = {
     accountId:'13344',
     accountType:'SAVINGS'
@@ -39,5 +40,7 @@ describe("Accounts Overview Test", () => {
         accountOviewPage.verifyAccountDetailsByPage(accountDetails)
 
     })
+    
+
 
 })

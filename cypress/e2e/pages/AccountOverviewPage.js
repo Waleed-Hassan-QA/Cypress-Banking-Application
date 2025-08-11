@@ -90,5 +90,18 @@ export class AccountOverviewPage {
             .should('be.visible')
 
     }
+    // This metho will be used in Fund transfer .. To get the existing acunt ID
+    getExixtingAccountId() {
+         cy.visit('https://parabank.parasoft.com/parabank/overview.htm')
+         return cy.get(this.locators.accountTableRow).eq(0).find('td').eq(0).invoke('text').then((accountId) => {
+            const existingAccountId = accountId.trim()
+            Cypress.env("ExistingAccountId", existingAccountId)
+            return existingAccountId
+
+        })
+
+
+    }
+
 
 }
