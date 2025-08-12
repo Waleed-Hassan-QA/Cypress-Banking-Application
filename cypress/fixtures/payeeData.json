@@ -1,0 +1,16 @@
+{
+  "PayeeDetails": {
+    "payeeName": "Waleed",
+    "payeeAddress": "abc",
+    "payeeCity": "new york",
+    "payeeState": "new york",
+    "payeeZipCode": "1234",
+    "payeePhone": "1234"
+  },
+  "RecipentDetails": {
+    "recipentAccountNumber": "1234",
+    "verifyAccountNumber": "1234"
+  },
+  "amount": "10",
+  "fromAccount": "2345"
+}

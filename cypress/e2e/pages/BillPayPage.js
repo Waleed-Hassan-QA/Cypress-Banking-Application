@@ -8,7 +8,7 @@ export class BillPayPage {
         payeeCity: "input[name='payee.address.city']",
         payeeState: "input[name='payee.address.state']",
         payeeZipCode: "input[name='payee.address.zipCode']",
-        payeePhone: '#cd473d90-046f-44db-b1c3-53f8fb21824e',
+        payeePhone: 'input[name="payee.phoneNumber"]',
 
         //Recipent Account Details
         recipentAccountNumber: "input[name='payee.accountNumber']",
@@ -19,10 +19,13 @@ export class BillPayPage {
         fromAccount: "select[name='fromAccountId']",
         sendPayment: "input[value='Send Payment']",
 
+        //Assert
+        assertBillPayment:"div[id='billpayResult'] h1[class='title']"
+
     }
 
     visit_BillPayPage() {
-        return cy.get(this.locators.billPayPageLink)
+         cy.visit('https://parabank.parasoft.com/parabank/billpay.htm')
     }
 
     addPayeedDetails_AndPayBill(PayeeDetails, AccountDetails, Amount, fromAccount) {
@@ -34,23 +37,17 @@ export class BillPayPage {
         cy.get(this.locators.payeePhone).clear().type(PayeeDetails.payeePhone)
 
         cy.get(this.locators.recipentAccountNumber).clear().type(AccountDetails.recipentAccountNumber)
-        cy.get(this.locators.verifyAccountNumber).clear().type(PayeeDetails.verifyAccountNumber)
+        cy.get(this.locators.verifyAccountNumber).clear().type(AccountDetails.verifyAccountNumber)
 
         cy.get(this.locators.amount).clear().type(Amount)
-        cy.get(this.locators.fromAccount).clear().type(fromAccount)
+        cy.get(this.locators.fromAccount).select(fromAccount)
 
         cy.get(this.locators.sendPayment).click()
     }
 
     asssertBillPaid() {
-        //return cy.get(this.locators.successMessage)
+         cy.get(this.locators.assertBillPayment).should('have.text','Bill Payment Complete')
     }
-
-
-
-
-
-
 
 
 
